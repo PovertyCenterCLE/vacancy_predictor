@@ -23,4 +23,102 @@ The algorithm used in the Syracuse study is referred to as a “random forest”
 
 The model would be built off of Thriving Communities Institute surveys, so the model would effectively predict if a parcel is likely to be called vacant by a TCI survey, which we are assuming to be “true” vacant.
 
-Lastly, this model can built with historical data in an attempt to predict whether a parcel is likely to become vacant in the future (e.g. 6 months from now.
+Lastly, this model can built with historical data in an attempt to predict whether a parcel is likely to become vacant in the future (e.g. 6 months from now.)
+
+## Data processing
+
+### Property data
+Data from `main_prop.csv`. This file is **large** and was filtered to data from the year 2013 (most recent available in the dataset as far as I know).
+
+* zip code
+* property size
+* pclass
+* total usable area
+* total market value
+* condition
+* housing style
+* owner occupancy
+* total number of buildings
+* year built
+* exterior wall type
+
+### Demographic data
+Data acquired through NEO CANDO 2010+ via Census. Using a file provided by Nina, matched parcel numbers to census tracts, and imputed missing data with median values.
+
+* Vacant housing units, percent, 2012 5-yr est (ACS 2012 5-year)
+* Median gross rent, number, 2012 5-yr est (ACS 2012 5-year)
+* Property crimes, rate per 100,000 population, 2014 (Crime)
+* Burglaries, rate per 100,000 population, 2014 (Crime)
+* Other illicit drug violations, rate per 100,000 population, 2014 (Crime)
+* Part I crimes, rate per 100,000 population, 2014 (Crime)
+* Part II crimes, rate per 100,000 population, 2014 (Crime)
+* Persons with bachelors degree or more, percent, 2012 5-yr est (ACS 2012 5-year)
+* Poverty rate, 2012 5-yr est (ACS 2012 5-year)
+* Median household income, 2012 5-yr est (ACS 2012 5-year)
+* White, percent, 2012 5-yr est (ACS 2012 5-year)
+* Black, percent, 2012 5-yr est (ACS 2012 5-year)
+* Asian/Pac Islander, percent, 2012 5-yr est (ACS 2012 5-year)
+* Other race, percent, 2012 5-yr est (ACS 2012 5-year)
+* Hispanic, percent, 2012 5-yr est (ACS 2012 5-year)
+* Population aged 0-17, percent, 2012 5-yr est (ACS 2012 5-year)
+* Population aged 18-64, percent, 2012 5-yr est (ACS 2012 5-year)
+* Population aged 65+, percent, 2012 5-yr est (ACS 2012 5-year)
+
+### Armslength sales
+Original filename: `armslengthsales2006_2014.csv`
+
+* number of records for each parcel number
+* flags for deed type (restricted to Quit Claim Deed, Warranty Deed, Limited Warranty, Survivorshi Deed, Fiduciary Deed)
+* amount paid in last sale, or else 0 (?)
+* sale valid code in last sale (1 if code, 0 if no code)
+
+### Transfers
+
+Original filename: `transfers2000_2014.csv`
+
+* number of transfers
+	* could include number of transfers in time period 
+* deed type of most recent entry (or else listed as 'Other'), for 10 most common deed types
+
+### County land bank
+
+* flag variable for existence in dataset (1 if in, else 0)
+
+### Postal vacancy 	
+
+Most recent entries to the dataset occur in 2/2014.
+
+* flag variable for existence of Y and P in 'vindall', (1 if yes, 0 if no)
+
+### Violations
+
+* violations count of each task (application acceptance, closure, condemnation, etc.)
+* violations count (total)
+* violations count (since 3/1/2014)
+* count of violations by type (for each type with at least 500 counts), such as fire damance, 30 day condemnations, etc.
+
+### Complaints
+
+* counts by type of complaint (at least ~6,000 counts), including OVV, fire damange, electrical, etc. 
+* complaint count total
+* complaint count since 9/1/2013
+* complaint count since 12/1/2013
+
+### Foreclosure data
+
+* active foreclosure (1 if true, else 0)
+* most recent pamount (since 3/1/2011)
+* flags for 'dis w/o prej', 'newly filed', 'default','disp. other'
+
+### Sheriff's auction
+
+* count of sheriff's auctions since 1/1/2013
+* count of sheriff's auctions, total
+
+### Tax bill information
+From December 2014.
+
+* grand total balance
+* lender process type
+
+

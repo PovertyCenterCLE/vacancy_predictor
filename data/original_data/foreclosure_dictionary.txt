@@ -1,0 +1,27 @@
+filename: foreclosure_filings2006_beyond.csv
+
+source organization: City of Cleveland Department of Building and Housing
+
+contact:
+
+file format: CSV file
+
+data range: 2006-2015
+
+description: List of foreclosure filings from 2006 to last update, (11/7/2015 as of update). The original data is appended to this file by Mike Schramm most likely using a SAS script. 
+
+variable names:
+
+parcel - (str) contains the parcel property number of the foreclosure
+status - (str) active or inactive foreclosure
+filedate - (str) month / day / year
+defendant - (str) defendant
+caseno - (str) unique case number
+parcel_address - (str) address of parcel, less accurate than parcel
+dateid - (str) month / day / year, date data was accessed
+case_title - all NaN
+plaintiff - (str) plaintiff
+FORE - (int) all 1's
+LATITUDE - (float) latitude of presumably parcel centroid
+LONGITUDE - (float) longitude of presumably the parcel centroid
+zip_fore - (str) zip code of parcel
